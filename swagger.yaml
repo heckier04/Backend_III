@@ -1,0 +1,97 @@
+
+openapi: 3.0.1
+info:
+  title: Backend III - API
+  description: Documentación de rutas del proyecto Backend III
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/api
+    description: Servidor local de desarrollo
+
+paths:
+  /users:
+    get:
+      summary: Obtener todos los usuarios
+      tags: [Users]
+      responses:
+        '200':
+          description: Lista de usuarios
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  payload:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+
+    post:
+      summary: Crear un nuevo usuario
+      tags: [Users]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewUser'
+      responses:
+        '201':
+          description: Usuario creado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  payload:
+                    $ref: '#/components/schemas/User'
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: 60f73b5c7b5c5a0015d85d29
+        first_name:
+          type: string
+          example: Thiago
+        last_name:
+          type: string
+          example: Villasanti
+        email:
+          type: string
+          example: thiago@email.com
+        role:
+          type: string
+          example: user
+        pets:
+          type: array
+          items:
+            type: string
+          example: []
+
+    NewUser:
+      type: object
+      required:
+        - first_name
+        - last_name
+        - email
+        - password
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
