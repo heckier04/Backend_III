@@ -1,0 +1,20 @@
+openapi: 3.0.1
+info:
+  title: Backend III - API
+  description: Documentación Swagger para todas las rutas
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/api
+    description: Servidor local de desarrollo
+
+paths:
+  /users:
+    $ref: './users.yaml#/paths/~1users'
+  /pets:
+    $ref: './pets.yaml#/paths/~1pets'
+  /adoptions:
+    $ref: './adoptions.yaml#/paths/~1adoptions'
+
+components:
+  $ref: './users.yaml#/components'

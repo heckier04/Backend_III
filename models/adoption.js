@@ -1,17 +1,17 @@
 import mongoose from 'mongoose'
 
 const adoptionSchema = new mongoose.Schema({
-  petId: {                         // ID de la mascota adoptada
+  petId: {                         
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Pet',                    // Se relaciona con el modelo Pet
+    ref: 'Pet',                    
     required: true
   },
-  userId: {                        // ID del usuario que adoptó
+  userId: {                        
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',                   // Se relaciona con el modelo User
+    ref: 'User',                   
     required: true
   },
-  adoptionDate: {                 // Fecha automática de adopción
+  adoptionDate: {                
     type: Date,
     default: Date.now
   }

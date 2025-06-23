@@ -18,14 +18,13 @@ export const generateData = async (req, res) => {
     const createdUsers = [];
     const createdPets = [];
 
-    // Generar y guardar mascotas usando mockingPets
+    
     const mockPets = generateMockPets(pets);
     for (let pet of mockPets) {
       const newPet = await Pet.create(pet);
       createdPets.push(newPet);
     }
 
-    // Generar y guardar usuarios
     const mockUsers = await generateMockUsers(users);
     for (let user of mockUsers) {
       const newUser = await User.create(user);

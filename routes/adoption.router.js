@@ -3,19 +3,19 @@ import AdoptionModel from '../models/adoption.js';
 
 const router = Router();
 
-// 📥 GET /api/adoptions → Obtener todas las adopciones
+
 router.get('/', async (req, res) => {
   try {
     const adoptions = await AdoptionModel.find()
-      .populate('petId')      // Muestra detalles del pet
-      .populate('userId')     // Muestra detalles del user
+      .populate('petId')     
+      .populate('userId')     
     res.json({ status: 'success', payload: adoptions })
   } catch (error) {
     res.status(500).json({ status: 'error', error: error.message })
   }
 })
 
-// ➕ POST /api/adoptions → Crear una adopción
+
 router.post('/', async (req, res) => {
   const { petId, userId } = req.body
   if (!petId || !userId) {

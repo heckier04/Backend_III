@@ -10,7 +10,8 @@ import YAML from 'yamljs'
 dotenv.config();
 
 const app = express();
-const swaggerDocument = YAML.load('./swagger.yaml')
+const swaggerDocument = YAML.load('./yaml/index.yaml')
+
 
 app.use(express.json());
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
